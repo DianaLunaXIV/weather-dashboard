@@ -19,7 +19,7 @@ $( function() {
         }
     })
 });
-
+//Using the chosen city, replace the lat/lon values and use them in the OneCall API.
 function getFromOneCall(){
     let requestURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentCity.lat}&lon=${currentCity.lon}&units=imperial&appid=dae07aaca7616262277cefcd84b42b42`;
     fetch(requestURL)
