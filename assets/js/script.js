@@ -5,7 +5,7 @@ let currentCity = {};
 $( function() {
     //This is the jQuery Autocomplete source array.
     // const availableMatches = citiesList.map(city => `${city.name}, ${city.state}`);
-    const availableMatches = citiesList.map(city => ({
+    const availableMatches = citiesUS.map(city => ({
         ...city,
         value: `${city.name}, ${city.state}`
     }))
@@ -19,11 +19,11 @@ $( function() {
         }
     })
 });
-
+let requestedObject;
 function getFromOneCall(){
     let requestURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentCity.lat}&lon=${currentCity.lon}&units=imperial&appid=dae07aaca7616262277cefcd84b42b42`;
     fetch(requestURL)
         .then(response => response.json())
-        .then(data => console.log(data));
+        .then(data => requestedObject = JSON.stringify(data));
 
 };
