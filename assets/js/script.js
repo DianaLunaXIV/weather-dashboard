@@ -12,6 +12,10 @@ $( function() {
     $("#citySearchBar").autocomplete({
         source: availableMatches,
         select: function(event, ui) {
+            console.log(event, ui.item.name);
+            currentCity.name = ui.item.name;
+            console.log(event, ui.item.state);
+            currentCity.state = ui.item.state;
             console.log(event, ui.item.coord.lon);
             currentCity.lon = ui.item.coord.lon;
             console.log(event, ui.item.coord.lat);
@@ -19,11 +23,10 @@ $( function() {
         }
     })
 });
-let requestedObject;
+let requestedWeather;
 function getFromOneCall(){
     let requestURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentCity.lat}&lon=${currentCity.lon}&units=imperial&appid=dae07aaca7616262277cefcd84b42b42`;
-    fetch(requestURL)
+    return fetch(requestURL)
         .then(response => response.json())
-        .then(data => requestedObject = JSON.stringify(data));
-
+        .then(data => requestedWeather = data);
 };
