@@ -30,3 +30,9 @@ function getFromOneCall(){
         .then(response => response.json())
         .then(data => requestedWeather = data);
 };
+
+function appendWeatherData(){
+    const requestedCurrentTemp = requestedWeather.current.temp;
+    $('#mainCurrentTemperature').text(requestedCurrentTemp);
+    
+};
