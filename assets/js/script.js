@@ -23,6 +23,8 @@ $( function() {
         }
     })
 });
+
+//Use the current search term to search the api for weather conditions
 let requestedWeather;
 function getFromOneCall(){
     let requestURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentCity.lat}&lon=${currentCity.lon}&units=imperial&appid=dae07aaca7616262277cefcd84b42b42`;
@@ -31,8 +33,13 @@ function getFromOneCall(){
         .then(data => requestedWeather = data);
 };
 
-function appendWeatherData(){
+//Append weather conditions for current city to HTML elements
+function appendMainWeatherData(){
     const requestedCurrentTemp = requestedWeather.current.temp;
+    const requestedCurrentFeelsLike = requestedWeather.current.feels_like;
+    const requestedCurrentUVIndex = requestedWeather.current.uvi;
     $('#mainCurrentTemperature').text(requestedCurrentTemp);
+    $('#mainCurrentFeelsLike').text(requestedCurrentFeelsLike);
+    $('#mainCurrentUVIndex').text(requestedCurrentUVIndex);
     
 };
