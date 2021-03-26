@@ -11,6 +11,7 @@ $( function() {
     }))
     $("#citySearchBar").autocomplete({
         source: availableMatches,
+        minLength: 3,
         select: function(event, ui) {
             console.log(event, ui.item.name);
             currentCity.name = ui.item.name;
@@ -33,13 +34,29 @@ function getFromOneCall(){
         .then(data => requestedWeather = data);
 };
 
+// yours works but this is another way to do it
+async function asyncGetFromOneCall(){
+    let requestURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentCity.lat}&lon=${currentCity.lon}&units=imperial&appid=dae07aaca7616262277cefcd84b42b42`;
+    const response = await fetch(requestURL);
+    requestedWeather = await response.json();
+};
+
 //Append weather conditions for current city to HTML elements
 function appendMainWeatherData(){
     const requestedCurrentTemp = requestedWeather.current.temp;
     const requestedCurrentFeelsLike = requestedWeather.current.feels_like;
     const requestedCurrentUVIndex = requestedWeather.current.uvi;
-    $('#mainCurrentTemperature').text(requestedCurrentTemp);
-    $('#mainCurrentFeelsLike').text(requestedCurrentFeelsLike);
-    $('#mainCurrentUVIndex').text(requestedCurrentUVIndex);
+    $('#mainCurrentTemperature').text(`Currently: ${requestedCurrentTemp}`);
+    $('#mainCurrentFeelsLike').text(`Feels like: ${requestedCurrentFeelsLike}`);
+    $('#mainCurrentUVIndex').text(`UV Index: ${requestedCurrentUVIndex}`);
     
 };
+
+async function asyncCall(){
+    $('mainCurrentTemperature').text('Loading...');
+    // const result = await getFromOneCall();
+    await asyncGetFromOneCall();
+    appendMainWeatherData();
+};
+
+$('#searchButton').click(asyncCall);
