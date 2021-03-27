@@ -9,8 +9,15 @@
 .card {
     width: 20rem;
     height: 20rem;
+    overflow: auto;
 }
 
+.card img {
+    display: none;
+    align-self: center;
+    width: 25%;
+    height: 25%;
+}
 .uvLow {
     background-color: green;
 }
