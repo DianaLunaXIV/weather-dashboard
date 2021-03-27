@@ -25,9 +25,19 @@
             </div>
         </div>
         <div class="container" id="mainWeatherCard">
-            <p id="mainCurrentTemperature"></p>
-            <p id="mainCurrentFeelsLike"></p>
-            <p id="mainCurrentUVIndex"></p>
+            <div class="row">
+                <div class="card col-3" id="previousResults">
+                    <ul class="list-group list-group-flush" id="previousResultsUL">
+                    </ul>
+                </div>
+                <div class="card text-center col-9" id="mainCurrentCard">
+                    <div class="card-body">
+                        <p id="mainCurrentTemperature"></p>
+                        <p id="mainCurrentFeelsLike"></p>
+                        <p id="mainCurrentUVIndex"></p>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

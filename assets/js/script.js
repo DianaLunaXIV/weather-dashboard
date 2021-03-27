@@ -52,11 +52,16 @@ function appendMainWeatherData(){
     
 };
 
+function appendSearchResult(){
+    $(`<li class="list-group-item">${currentCity.name}, ${currentCity.state}</li>`).appendTo('#previousResultsUL');
+};
+
 async function asyncCall(){
     $('mainCurrentTemperature').text('Loading...');
     // const result = await getFromOneCall();
     await asyncGetFromOneCall();
     appendMainWeatherData();
+    appendSearchResult();
 };
 
 $('#searchButton').click(asyncCall);
