@@ -49,21 +49,22 @@ function appendSearchResult(){
 };
 
 function uvHighlight(){
-    const element = documment.getElementById("mainCurrentUVIndex");
+    const element = document.getElementById("mainCurrentUVIndex");
+    const currentUVI = requestedWeather.current.uvi;
     const uvClasses = ["uvLow", "uvModerate", "uvHigh", "uvVeryHigh", "uvExtreme"];
     uvClasses.forEach((classToRemove) => {
             element.classList.remove(classToRemove);
     })
     if (requestedWeather.current.uvi <= 2){
-        element.classList.add("uvLow");
-    } else if (2 < requestedWeather.current.uvi <= 5){
-        element.classList.add("uvModerate");
-    } else if (5 < requestedWeather.current.uvi <= 7){
-        element.classList.add("uvHigh");
-    } else if (7 < requestedWeather.current.uvi <= 10){
-        element.classList.add("uvVeryHigh");
-    } else if (requestedWeather.current.uvi > 10){
-        element.classList.add("uvExtreme");
+        element.classList.add("uvLow")
+    } else if (2 < currentUVI && currentUVI <= 5){
+        element.classList.add("uvModerate")
+    } else if (5 < currentUVI && currentUVI <= 7){
+        element.classList.add("uvHigh")
+    } else if (7 < currentUVI && currentUVI <= 10){
+        element.classList.add("uvVeryHigh")
+    } else if (currentUVI > 10){
+        element.classList.add("uvExtreme")
     } else return `Error with UVI value: ${requestedWeather.current.uvi}`
 };
 
