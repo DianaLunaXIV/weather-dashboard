@@ -1,5 +1,3 @@
-//Generate required unix time for API call
-const generateDateTime = Date.now();
 let currentCity = {};
 //Use OpenWeather's Geocoding API to filter search terms and convert them to lat,long. Limit to US only for now.
 $( function() {
