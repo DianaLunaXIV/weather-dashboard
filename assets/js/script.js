@@ -35,8 +35,13 @@ async function asyncGetFromOneCall(){
 
 //Append weather icon to img card
 function appendIcon(dayIndex){
-    let conditionIcon = requestedWeather.daily[dayIndex].weather[0].icon;
-    return `http://openweathermap.org/img/wn/${conditionIcon}@2x.png`
+    if (dayIndex !== 'current'){
+        let conditionIcon = requestedWeather.daily[dayIndex].weather[0].icon;
+        return `http://openweathermap.org/img/wn/${conditionIcon}@2x.png`
+    } else {
+        let conditionIcon = requestedWeather.current.weather[0].icon;
+        return `http://openweathermap.org/img/wn/${conditionIcon}@2x.png`
+    }
 };
 
 //Append weather conditions for current city to HTML elements
@@ -45,6 +50,8 @@ function appendMainWeatherData(){
     const requestedCurrentTemp = requestedWeather.current.temp;
     const requestedCurrentFeelsLike = requestedWeather.current.feels_like;
     const requestedCurrentWindSpeed = requestedWeather.current.wind_speed;
+    const requestedCurrentConditions = requestedWeather.current.weather[0].main;
+    const requestedCurrentConditionIcon = appendIcon('current');
     const requestedCurrentHumidity = requestedWeather.current.humidity;
     const requestedCurrentUVIndex = requestedWeather.current.uvi;
     const requestedTodayHigh = requestedWeather.daily[0].temp.max;
@@ -61,10 +68,11 @@ function appendMainWeatherData(){
     const requestedTomorrowHumidity = requestedWeather.daily[1].humidity;
     const requestedTomorrowConditionIcon = appendIcon(1);
     const requestedTomorrowUVI = requestedWeather.daily[1].uvi;
-    $('#mainCurrentConditionImage').attr("src", requestedTodayConditionIcon);
+    $('#mainCurrentConditionImage').attr("src", requestedCurrentConditionIcon);
     $('#mainCurrentConditionImage').attr("style", "display: initial;");
     $('#mainCurrentTemperature').text(`Currently: ${requestedCurrentTemp}`);
     $('#mainCurrentFeelsLike').text(`Feels like: ${requestedCurrentFeelsLike}`);
+    $('#mainCurrentConditions').text(`Current conditions: ${requestedCurrentConditions}`);
     $('#mainCurrentWindSpeed').text(`Current wind speed: ${requestedCurrentWindSpeed}`);
     $('#mainCurrentHumidity').text(`Current humidity: ${requestedCurrentHumidity}`);
     $('#mainCurrentUVIndex').text(`UV Index: ${requestedCurrentUVIndex}`);
