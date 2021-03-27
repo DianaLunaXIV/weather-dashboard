@@ -40,36 +40,49 @@ function appendIcon(dayIndex){
 };
 
 //Append weather conditions for current city to HTML elements
+//Yes, this function is ridiculously big. Maybe I'll break it into smaller components later.
 function appendMainWeatherData(){
     const requestedCurrentTemp = requestedWeather.current.temp;
     const requestedCurrentFeelsLike = requestedWeather.current.feels_like;
+    const requestedCurrentWindSpeed = requestedWeather.current.wind_speed;
+    const requestedCurrentHumidity = requestedWeather.current.humidity;
     const requestedCurrentUVIndex = requestedWeather.current.uvi;
     const requestedTodayHigh = requestedWeather.daily[0].temp.max;
     const requestedTodayLow = requestedWeather.daily[0].temp.min;
     const requestedTodayConditions = requestedWeather.daily[0].weather[0].main;
+    const requestedTodayWindSpeed = requestedWeather.daily[0].wind_speed;
+    const requestedTodayHumidity = requestedWeather.daily[0].humidity;
     const requestedTodayConditionIcon = appendIcon(0);
     const requestedTodayUVI = requestedWeather.daily[0].uvi;
     const requestedTomorrowHigh = requestedWeather.daily[1].temp.max;
     const requestedTomorrowLow = requestedWeather.daily[1].temp.min;
     const requestedTomorrowConditions = requestedWeather.daily[1].weather[0].main;
+    const requestedTomorrowWindSpeed = requestedWeather.daily[1].wind_speed;
+    const requestedTomorrowHumidity = requestedWeather.daily[1].humidity;
     const requestedTomorrowConditionIcon = appendIcon(1);
     const requestedTomorrowUVI = requestedWeather.daily[1].uvi;
     $('#mainCurrentConditionImage').attr("src", requestedTodayConditionIcon);
     $('#mainCurrentConditionImage').attr("style", "display: initial;");
     $('#mainCurrentTemperature').text(`Currently: ${requestedCurrentTemp}`);
     $('#mainCurrentFeelsLike').text(`Feels like: ${requestedCurrentFeelsLike}`);
+    $('#mainCurrentWindSpeed').text(`Current wind speed: ${requestedCurrentWindSpeed}`);
+    $('#mainCurrentHumidity').text(`Current humidity: ${requestedCurrentHumidity}`);
     $('#mainCurrentUVIndex').text(`UV Index: ${requestedCurrentUVIndex}`);
     $('#todayConditionImage').attr("src", requestedTodayConditionIcon);
     $('#todayConditionImage').attr("style", "display: initial;");
     $('#todayHighTemperature').text(`Today's High: ${requestedTodayHigh}`);
     $('#todayLowTemperature').text(`Today's Low: ${requestedTodayLow}`);
     $('#todayConditions').text(`Expected conditions: ${requestedTodayConditions}`);
+    $('#todayWindSpeed').text(`Expected wind speed: ${requestedTodayWindSpeed}`);
+    $('#todayHumidity').text(`Expected humidity: ${requestedTodayHumidity}`);
     $('#todayUVIndex').text(`Expected UV Index: ${requestedTodayUVI} `);
     $('#tomorrowConditionImage').attr("src", requestedTomorrowConditionIcon);
     $('#tomorrowConditionImage').attr("style", "display: initial;");
     $('#tomorrowHighTemperature').text(`Tomorrow's High: ${requestedTomorrowHigh}`);
     $('#tomorrowLowTemperature').text(`Tomorrow's Low: ${requestedTomorrowLow}`);
     $('#tomorrowConditions').text(`Expected conditions: ${requestedTomorrowConditions}`);
+    $('#tomorrowWindSpeed').text(`Expected wind speed: ${requestedTomorrowWindSpeed}`);
+    $('#tomorrowHumidity').text(`Expected humidity: ${requestedTomorrowHumidity}`);
     $('#tomorrowUVIndex').text(`Expected UV Index: ${requestedTomorrowUVI} `);
 };
 
