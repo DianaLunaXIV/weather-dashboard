@@ -38,10 +38,25 @@ function appendMainWeatherData(){
     const requestedCurrentTemp = requestedWeather.current.temp;
     const requestedCurrentFeelsLike = requestedWeather.current.feels_like;
     const requestedCurrentUVIndex = requestedWeather.current.uvi;
+    const requestedTodayHigh = requestedWeather.daily[0].temp.max;
+    const requestedTodayLow = requestedWeather.daily[0].temp.min;
+    const requestedTodayConditions = requestedWeather.daily[0].weather[0].main;
+    const requestedTodayUVI = requestedWeather.daily[0].uvi;
+    const requestedTomorrowHigh = requestedWeather.daily[1].temp.max;
+    const requestedTomorrowLow = requestedWeather.daily[1].temp.min;
+    const requestedTomorrowConditions = requestedWeather.daily[1].weather[0].main;
+    const requestedTomorrowUVI = requestedWeather.daily[1].uvi;
     $('#mainCurrentTemperature').text(`Currently: ${requestedCurrentTemp}`);
     $('#mainCurrentFeelsLike').text(`Feels like: ${requestedCurrentFeelsLike}`);
     $('#mainCurrentUVIndex').text(`UV Index: ${requestedCurrentUVIndex}`);
-    
+    $('#todayHighTemperature').text(`Today's High: ${requestedTodayHigh}`);
+    $('#todayLowTemperature').text(`Today's Low: ${requestedTodayLow}`);
+    $('#todayConditions').text(`Expected conditions: ${requestedTodayConditions}`);
+    $('#todayUVIndex').text(`Expected UV Index: ${requestedTodayUVI} `);
+    $('#tomorrowHighTemperature').text(`Tomorrow's High: ${requestedTomorrowHigh}`);
+    $('#tomorrowLowTemperature').text(`Tomorrow's Low: ${requestedTomorrowLow}`);
+    $('#tomorrowConditions').text(`Expected conditions: ${requestedTomorrowConditions}`);
+    $('#tomorrowUVIndex').text(`Expected UV Index: ${requestedTomorrowUVI} `);
 };
 
 function appendSearchResult(){

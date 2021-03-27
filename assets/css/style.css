@@ -2,9 +2,13 @@
     width: 20em;
 }
 
+#searchButton{
+    width: -webkit-fill-available;
+}
+
 .card {
-    width: 16rem;
-    height: 16rem;
+    width: 20rem;
+    height: 20rem;
 }
 
 .uvLow {
