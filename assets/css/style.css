@@ -1,0 +1,28 @@
+#previousResults {
+    width: 20em;
+}
+
+.card {
+    width: 16rem;
+    height: 16rem;
+}
+
+.uvLow {
+    background-color: green;
+}
+
+.uvModerate {
+    background-color: yellow;
+}
+
+.uvHigh {
+    background-color: orange;
+}
+
+.uvVeryHigh {
+    background-color: red;
+}
+
+.uvExtreme {
+    background-color: violet;
+}

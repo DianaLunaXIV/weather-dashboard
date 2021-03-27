@@ -48,10 +48,30 @@ function appendSearchResult(){
     $(`<li class="list-group-item">${currentCity.name}, ${currentCity.state}</li>`).appendTo('#previousResultsUL');
 };
 
+function uvHighlight(){
+    const element = documment.getElementById("mainCurrentUVIndex");
+    const uvClasses = ["uvLow", "uvModerate", "uvHigh", "uvVeryHigh", "uvExtreme"];
+    uvClasses.forEach((classToRemove) => {
+            element.classList.remove(classToRemove);
+    })
+    if (requestedWeather.current.uvi <= 2){
+        element.classList.add("uvLow");
+    } else if (2 < requestedWeather.current.uvi <= 5){
+        element.classList.add("uvModerate");
+    } else if (5 < requestedWeather.current.uvi <= 7){
+        element.classList.add("uvHigh");
+    } else if (7 < requestedWeather.current.uvi <= 10){
+        element.classList.add("uvVeryHigh");
+    } else if (requestedWeather.current.uvi > 10){
+        element.classList.add("uvExtreme");
+    } else return `Error with UVI value: ${requestedWeather.current.uvi}`
+};
+
 async function asyncCall(){
     $('mainCurrentTemperature').text('Loading...');
     await asyncGetFromOneCall();
     appendMainWeatherData();
+    uvHighlight();
     appendSearchResult();
 };
 
