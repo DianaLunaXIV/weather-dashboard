@@ -68,6 +68,34 @@ function appendMainWeatherData(){
     const requestedTomorrowHumidity = requestedWeather.daily[1].humidity;
     const requestedTomorrowConditionIcon = appendIcon(1);
     const requestedTomorrowUVI = requestedWeather.daily[1].uvi;
+    const requestedDay3High = requestedWeather.daily[2].temp.max;
+    const requestedDay3Low = requestedWeather.daily[2].temp.min;
+    const requestedDay3Conditions = requestedWeather.daily[2].weather[0].main;
+    const requestedDay3WindSpeed = requestedWeather.daily[2].wind_speed;
+    const requestedDay3Humidity = requestedWeather.daily[2].humidity;
+    const requestedDay3ConditionIcon = appendIcon(2);
+    const requestedDay3UVI = requestedWeather.daily[2].uvi;
+    const requestedDay4High = requestedWeather.daily[3].temp.max;
+    const requestedDay4Low = requestedWeather.daily[3].temp.min;
+    const requestedDay4Conditions = requestedWeather.daily[3].weather[0].main;
+    const requestedDay4WindSpeed = requestedWeather.daily[3].wind_speed;
+    const requestedDay4Humidity = requestedWeather.daily[3].humidity;
+    const requestedDay4ConditionIcon = appendIcon(3);
+    const requestedDay4UVI = requestedWeather.daily[3].uvi;
+    const requestedDay5High = requestedWeather.daily[4].temp.max;
+    const requestedDay5Low = requestedWeather.daily[4].temp.min;
+    const requestedDay5Conditions = requestedWeather.daily[4].weather[0].main;
+    const requestedDay5WindSpeed = requestedWeather.daily[4].wind_speed;
+    const requestedDay5Humidity = requestedWeather.daily[4].humidity;
+    const requestedDay5ConditionIcon = appendIcon(4);
+    const requestedDay5UVI = requestedWeather.daily[4].uvi;
+    const requestedDay6High = requestedWeather.daily[5].temp.max;
+    const requestedDay6Low = requestedWeather.daily[5].temp.min;
+    const requestedDay6Conditions = requestedWeather.daily[5].weather[0].main;
+    const requestedDay6WindSpeed = requestedWeather.daily[5].wind_speed;
+    const requestedDay6Humidity = requestedWeather.daily[5].humidity;
+    const requestedDay6ConditionIcon = appendIcon(5);
+    const requestedDay6UVI = requestedWeather.daily[5].uvi;
     $('#mainCurrentConditionImage').attr("src", requestedCurrentConditionIcon);
     $('#mainCurrentConditionImage').attr("style", "display: initial;");
     $('#mainCurrentTemperature').text(`Currently: ${requestedCurrentTemp}`);
@@ -92,6 +120,38 @@ function appendMainWeatherData(){
     $('#tomorrowWindSpeed').text(`Expected wind speed: ${requestedTomorrowWindSpeed}`);
     $('#tomorrowHumidity').text(`Expected humidity: ${requestedTomorrowHumidity}`);
     $('#tomorrowUVIndex').text(`Expected UV Index: ${requestedTomorrowUVI} `);
+    $('#day3ConditionImage').attr("src", requestedDay3ConditionIcon);
+    $('#day3ConditionImage').attr("style", "display: initial;");
+    $('#day3HighTemperature').text(`Day 3's High: ${requestedDay3High}`);
+    $('#day3LowTemperature').text(`Day 3's Low: ${requestedDay3Low}`);
+    $('#day3Conditions').text(`Expected conditions: ${requestedDay3Conditions}`);
+    $('#day3WindSpeed').text(`Expected wind speed: ${requestedDay3WindSpeed}`);
+    $('#day3Humidity').text(`Expected humidity: ${requestedDay3Humidity}`);
+    $('#day3UVIndex').text(`Expected UV Index: ${requestedDay3UVI} `);
+    $('#day4ConditionImage').attr("src", requestedDay4ConditionIcon);
+    $('#day4ConditionImage').attr("style", "display: initial;");
+    $('#day4HighTemperature').text(`Day 4's High: ${requestedDay4High}`);
+    $('#day4LowTemperature').text(`Day 4's Low: ${requestedDay4Low}`);
+    $('#day4Conditions').text(`Expected conditions: ${requestedDay4Conditions}`);
+    $('#day4WindSpeed').text(`Expected wind speed: ${requestedDay4WindSpeed}`);
+    $('#day4Humidity').text(`Expected humidity: ${requestedDay4Humidity}`);
+    $('#day4UVIndex').text(`Expected UV Index: ${requestedDay4UVI} `);
+    $('#day5ConditionImage').attr("src", requestedDay5ConditionIcon);
+    $('#day5ConditionImage').attr("style", "display: initial;");
+    $('#day5HighTemperature').text(`Day 5's High: ${requestedDay5High}`);
+    $('#day5LowTemperature').text(`Day 5's Low: ${requestedDay5Low}`);
+    $('#day5Conditions').text(`Expected conditions: ${requestedDay5Conditions}`);
+    $('#day5WindSpeed').text(`Expected wind speed: ${requestedDay5WindSpeed}`);
+    $('#day5Humidity').text(`Expected humidity: ${requestedDay5Humidity}`);
+    $('#day5UVIndex').text(`Expected UV Index: ${requestedDay5UVI} `);
+    $('#day6ConditionImage').attr("src", requestedDay6ConditionIcon);
+    $('#day6ConditionImage').attr("style", "display: initial;");
+    $('#day6HighTemperature').text(`Day 6's High: ${requestedDay6High}`);
+    $('#day6LowTemperature').text(`Day 6's Low: ${requestedDay6Low}`);
+    $('#day6Conditions').text(`Expected conditions: ${requestedDay6Conditions}`);
+    $('#day6WindSpeed').text(`Expected wind speed: ${requestedDay6WindSpeed}`);
+    $('#day6Humidity').text(`Expected humidity: ${requestedDay6Humidity}`);
+    $('#day6UVIndex').text(`Expected UV Index: ${requestedDay6UVI} `);
 };
 
 function appendSearchResult(){
@@ -105,6 +165,14 @@ function getWeatherForCardID(cardID){
         return requestedWeather.daily[0]
     } else if (cardID === 'tomorrowUVIndex'){
         return requestedWeather.daily[1]
+    } else if (cardID === 'day3UVIndex'){
+        return requestedWeather.daily[2]
+    } else if (cardID === 'day4UVIndex'){
+        return requestedWeather.daily[3]
+    } else if (cardID === 'day5UVIndex'){
+        return requestedWeather.daily[4]
+    } else if (cardID === 'day6UVIndex'){
+        return requestedWeather.daily[5]
     } else {
         console.log('Something went wrong in getWeatherForCardID.', cardID)
     }
